@@ -1,0 +1,23 @@
+.sandbox-container-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.sandbox-container{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height:80vh;
+}
+.editor{
+        flex:1;
+        // background-color:black;
+    }
+.preview{
+        flex:1;
+        background-color:tomato;
+    }
+
+    .console{
+        background-color: aquamarine;
+        height:20vh
+    }
