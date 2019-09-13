@@ -25,3 +25,7 @@ export function debounce(func, wait, immediate) {
         if (callNow) func.apply(context, args);
     };
 }
+
+export function getTimeStamp(date = new Date()) {
+    return date.toUTCString();
+}

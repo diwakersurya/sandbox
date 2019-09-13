@@ -4,37 +4,25 @@ import Preview from './Preview';
 import FileTabs from './FileTabs';
 import Popup from './Popup';
 
-const code1 = ` import {add} from "./file.js"
-console.log(add(5,6))`;
+const indexCode = `console.log("Hello World!")`;
 
-const code2 = `function add(a,b){
-                return a+b;
-            }
-            export {add};`;
-function getFileObject1() {
-    return {
-        path: '/index.js',
-        content: code1
-    };
-}
+const defaultCode = `/* Type some code here... */`;
+
 function getFileObject(path) {
+    if (path === '/index.js') {
+        return {
+            path,
+            content: indexCode
+        };
+    }
     return {
         path: path.indexOf('./') === -1 ? './' + path : path,
-        content: code2
-    };
-}
-function getFileObject2() {
-    return {
-        path: './file.js',
-        content: code2
+        content: defaultCode
     };
 }
 
 export default function Sandbox() {
-    const [files, setFiles] = React.useState([
-        getFileObject1(),
-        getFileObject2()
-    ]);
+    const [files, setFiles] = React.useState([getFileObject('/index.js')]);
     const [showPopup, setShowPopup] = React.useState(false);
     const [fileName, setFileName] = React.useState('');
     const [activeTabIndex, setActiveTabIndex] = React.useState(0);

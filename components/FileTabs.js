@@ -5,6 +5,9 @@ import Editor from './Editor';
 import '../styles/filetabs.scss';
 
 export default function FileTabs({ files, handleFileChange, onTabClick }) {
+    const getFileName = React.useCallback(path => {
+        return path.split('/').pop();
+    }, []);
     return (
         <>
             <TabBar onTabClick={onTabClick}>
@@ -15,7 +18,7 @@ export default function FileTabs({ files, handleFileChange, onTabClick }) {
                             className="tab__item"
                             id={path}
                             key={path}
-                            text={path}>
+                            text={getFileName(path)}>
                             <Editor
                                 path={path}
                                 value={content}

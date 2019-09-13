@@ -16,9 +16,6 @@ export function define(deps, string) {
     var F = new Function(string);
     F();
 }
-function cleanupDOM() {
-    document.querySelector('#app').innerHTML = '';
-}
 //===================================================
 
 async function compileCode(payload) {
@@ -180,7 +177,6 @@ export default async function runtime({
 }
 
 export function process(files) {
-    cleanupDOM();
     runtime({ files }).catch(ex => {
         log('error', ex.message);
     });
@@ -192,12 +188,29 @@ export function receiveMessage(event) {
         // document.getElementById('app').innerHTML = JSON.stringify(data.payload);
         const files = data.payload;
         try {
+            clearLogs();
+            //showLoading();
             process(files);
         } catch (ex) {
             log('error', ex.message);
+            //hideLoading();
         }
     }
 }
+function showLoading() {
+    const container = document.querySelector('#app');
+    container.innerHTML = '';
+    container.innerHTML = `<div class="loader-wrapper"><div class="loader"></div></div>`;
+}
+function hideLoading() {
+    const container = document.querySelector('#app');
+    container.innerHTML = '';
+}
+export function clearLogs() {
+    parent.postMessage({ type: 'clear-logs' });
+    hideLoading();
+}
 export function log(level, message) {
     parent.postMessage({ type: level, payload: message });
+    hideLoading();
 }
