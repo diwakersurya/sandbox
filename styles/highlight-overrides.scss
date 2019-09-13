@@ -1,10 +1,106 @@
 
-/**
- * Based on copypasta from Remy Bach and Sarah Drasner
- */
- .sandbox-container__editor{
-code[class*='language-'],
-pre[class*='language-'] {
+.prism-code {
+  background-color: inherit;
+  color: inherit;
+}
+textarea {
+  outline-offset: inherit;
+  outline: none;
+}
+code[class*="language-"] {
+  display: inline;
+}
+pre[class*="language-"] {
+  border-radius: 8px;
+  code[class*="language-"] {
+    padding: 0px;
+    font-size: inherit;
+    border: none;
+    display: inline;
+  }
+}
+p {
+  font-family: medium-content-serif-font, Georgia, Cambria, Times New Roman,
+    Times, serif;
+  font-size: 1.2rem;
+  text-align: justify;
+  line-height: 1.6em;
+}
+h1 {
+  margin: 0 0 0.5em 0;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+h2 {
+  margin: 1.5em 0 0.5em 0;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  margin: 1.5em 0 0.5em 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+h4 {
+  margin: 1.5em 0 0.5em 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+h5 {
+  margin: 1.5em 0 0.5em 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+h6 {
+  margin: 1.5em 0 0.5em 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+pre,
+blockquote,
+.footnotes {
+  min-width: 100%;
+}
+blockquote {
+  border-left: 3px solid rgba(0, 0, 0, 0.84);
+  font-style: italic;
+  padding-left: 20px;
+  margin-left: -23px;
+  padding-bottom: 2px;
+  p {
+    margin-bottom: 0px;
+  }
+}
+
+// // below code for theming of code shown in blogs. copied from dan abramove's overreacted.io
+// /**
+//  * Based on copypasta from Remy Bach and Sarah Drasner
+//  */
+code[class*="language-"],
+pre[class*="language-"] {
   color: white;
   background: none;
   font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
@@ -17,52 +113,50 @@ pre[class*='language-'] {
   line-height: 1.5;
   margin-bottom: 0;
 
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
   tab-size: 4;
 
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
 }
 
 /* Code blocks */
-pre[class*='language-'] {
+pre[class*="language-"] {
   overflow: auto;
   padding: 1.3125rem;
 }
 
-pre[class*='language-']::-moz-selection {
+pre[class*="language-"]::-moz-selection {
   /* Firefox */
   background: hsl(207, 4%, 16%);
 }
 
-pre[class*='language-']::selection {
+pre[class*="language-"]::selection {
   /* Safari */
   background: hsl(207, 4%, 16%);
 }
 
 /* Text Selection colour */
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection {
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection {
   text-shadow: none;
   background: hsla(0, 0%, 100%, 0.15);
 }
 
-pre[class*='language-']::selection,
-pre[class*='language-'] ::selection {
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection {
   text-shadow: none;
   background: hsla(0, 0%, 100%, 0.15);
 }
 
 /* Inline code */
-:not(pre) > code[class*='language-'] {
+:not(pre) > code[class*="language-"] {
   border-radius: 0.3em;
   background: var(--inlineCode-bg);
   color: var(--inlineCode-text);
   padding: 0.15em 0.2em 0.05em;
   white-space: normal;
+}
+:not(pre) > code[class*="language-text"] {
+  color: red;
 }
 
 .token.attr-name {
@@ -87,6 +181,10 @@ pre[class*='language-'] ::selection {
   color: rgb(247, 140, 108);
 }
 
+.token.atrule {
+  color: #cc99cd;
+}
+
 .token.builtin,
 .token.char,
 .token.constant,
@@ -101,7 +199,7 @@ pre[class*='language-'] ::selection {
 .token.selector,
 .token.doctype {
   color: rgb(199, 146, 234);
-  font-style: 'italic';
+  font-style: "italic";
 }
 
 .token.class-name {
@@ -130,4 +228,27 @@ pre[data-line] {
   padding: 1em 0 1em 3em;
   position: relative;
 }
+
+.highlight-code-line {
+  background-color: hsla(207, 95%, 15%, 1);
+  display: block;
+  padding-right: 1em;
+  padding-left: 1.25em;
+  border-left: 0.25em solid #ffa7c4;
+}
+
+.highlight {
+  background: #222222;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 672px) {
+  .highlight {
+    border-radius: 0;
+  }
+}
+
+.highlight pre[class*="language-"] {
+  float: left;
+  min-width: 100%;
 }

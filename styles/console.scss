@@ -1,0 +1,22 @@
+.console-controls{
+    display:flex;
+    align-items:start;
+    background-color:lighten(#222222,20%);
+    border-top:1px solid tomato;
+    &__item{
+        width:32px;
+        height:32px;
+        border:1px solid white;
+        cursor:pointer;
+        &--clear{
+            background:url("/static/clear.png") no-repeat center;
+        }
+
+    }
+
+}
+
+.console-messages{
+    overflow:scroll;
+    height:30vh
+}
