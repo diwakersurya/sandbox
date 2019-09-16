@@ -4,7 +4,7 @@ import Preview from './Preview';
 import FileTabs from './FileTabs';
 import Popup from './Popup';
 
-const indexCode = `console.log("Hello World!");`;
+const indexCode = `console.log("Hello World! ");`;
 
 const defaultCode = `/* Type some code here... */`;
 
