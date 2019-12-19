@@ -30,7 +30,7 @@ export default function FileTabs({ files, handleFileChange, onTabClick }) {
                 language="javascript"
                 theme={"dark"}
                 value={content}
-                onChange={value => {
+                onChange={(event, value) => {
                   handleFileChange(path, value);
                 }}
               />
